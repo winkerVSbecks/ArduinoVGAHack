@@ -24,7 +24,7 @@ void setup()
 {
   size(300, 300);
   FESetup();
-  myPort = new Serial(this, Serial.list()[1], 57600);
+//  myPort = new Serial(this, Serial.list()[1], 57600);
   rectMode(CENTER);
 }
 
@@ -33,11 +33,11 @@ void draw()
   background(0);
   stroke(255);
 
-  for(int i = 0; i < song.left.size()-1; i++)
+  for(int i = 0; i < in.bufferSize() - 1; i++)
   {
     int currVel = 0;
     float measuredVel = 0;
-    measuredVel = song.left.get(i);
+    measuredVel = in.left.get(i);
     currVel = 127 - int(map(measuredVel, -1, 1, 0, 255));
     if(currVel >= maxVel){
       maxVel = currVel;    
@@ -45,7 +45,7 @@ void draw()
   }
   
   text(maxVel, width/2, height/2);
-  myPort.write(maxVel);
+//  myPort.write(maxVel);
   maxVel = 0;
 }
 

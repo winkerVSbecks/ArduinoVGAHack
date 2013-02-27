@@ -2,13 +2,12 @@ import ddf.minim.*;
 import ddf.minim.analysis.*;
 
 Minim minim;
-AudioPlayer song;
+AudioInput in;
 
 void FESetup()
 { 
   minim = new Minim(this);
-  song = minim.loadFile("groove.mp3", 2048);
-  song.play();  
+  in = minim.getLineIn(Minim.STEREO, 512); 
   textFont(createFont("Helvetica", 16));
   textAlign(CENTER);
 }
@@ -16,7 +15,7 @@ void FESetup()
 void stop()
 {
   // always close Minim audio classes when you are finished with them
-  song.close();
+  in.close();
   // always stop Minim before exiting
   minim.stop();
   // this closes the sketch
