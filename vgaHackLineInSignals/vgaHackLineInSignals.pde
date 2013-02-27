@@ -24,7 +24,7 @@ void setup()
 {
   size(300, 300);
   FESetup();
-//  myPort = new Serial(this, Serial.list()[1], 57600);
+  myPort = new Serial(this, Serial.list()[1], 57600);
   rectMode(CENTER);
 }
 
@@ -45,7 +45,7 @@ void draw()
   }
   
   text(maxVel, width/2, height/2);
-//  myPort.write(maxVel);
+  myPort.write(maxVel);
   maxVel = 0;
 }
 
